@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  sls_pg:
+    image: postgres:15.1
+    container_name: sls_pg
+    restart: always
+    environment:
+      POSTGRES_DB: rberrocal_pg
+      POSTGRES_USER: urberrocal
+      POSTGRES_PASSWORD: rberrocal123
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
